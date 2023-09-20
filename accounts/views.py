@@ -5,6 +5,7 @@ from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.utils.crypto import get_random_string
 
 
 class UserSignupView(View):
@@ -24,7 +25,8 @@ class UserSignupView(View):
                 username = cd['username'],
                 password = cd['password'],
                 mobile = cd['mobile'],
-                is_active = False
+                is_active = False,
+                email_active_code = get_random_string(72)
             )
             messages.success(request, 'success create account', 'success')
             messages.success(request, 'please verify email address', 'success')
