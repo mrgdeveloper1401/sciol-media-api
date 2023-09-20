@@ -23,10 +23,11 @@ class UserSignupView(View):
                 email = cd['email'],
                 username = cd['username'],
                 password = cd['password'],
+                mobile = cd['mobile'],
                 is_active = False
             )
-            messages.success(request, 'success create account')
-            messages.success(request, 'please verify email address')
+            messages.success(request, 'success create account', 'success')
+            messages.success(request, 'please verify email address', 'success')
             return redirect('accounts:login')
         return render(request, self.template_name, {"register": register})
             
