@@ -13,5 +13,5 @@
         {% csrf_token %}
         <input type='submit' value='create account'>
     </form>
-    <a href=''>login</a>
+    <a href='{% url "accounts:login" %}'>login</a>
 {% endblock  %}

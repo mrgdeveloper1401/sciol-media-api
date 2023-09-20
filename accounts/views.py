@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.views import View
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, UserSigninForm
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class RegisterUserView(View):
+class UserSignupView(View):
     form_class = RegisterUserForm
     template_name = 'accounts/register.html'
     
@@ -30,8 +30,8 @@ class RegisterUserView(View):
             
 
 class UserSigninView(View):
-    template_name = ''
-    form_class = ''
+    form_class = UserSigninForm
+    template_name = 'accounts/login.html'
     
     def get(self, request):
         signin_form = self.form_class()
@@ -51,7 +51,7 @@ class UserSigninView(View):
         return render(request, self.template_name, {"signin_form": signin_form})
     
 
-class LogoutView(LoginRequiredMixin, View):
+class UserLogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         # message success
