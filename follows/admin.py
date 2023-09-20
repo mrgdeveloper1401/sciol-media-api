@@ -4,4 +4,4 @@ from .models import RelationUserModel
 
 @admin.register(RelationUserModel)
 class RelationUserModel(admin.ModelAdmin):
-    list_display = ('from_user', 'to_user')
+    list_display = ('from_user', 'to_user', "create_at")

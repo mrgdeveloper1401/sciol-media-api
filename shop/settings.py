@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
     'follows.apps.FollowsConfig',
+    'post.apps.PostConfig',
+    'comment.apps.CommentConfig',
+    
+    
     
     
 ]
