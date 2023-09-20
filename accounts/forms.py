@@ -5,14 +5,6 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm, Authenti
 from django.utils.translation import gettext_lazy as _
 
 
-class UserCreationForms(UserCreationForm):
-    ...
-    
-
-class UserChangeFormss(UserChangeForm):
-    ...
-
-
 class RegisterUserForm(forms.ModelForm):
     error_messages = {
         "password_mismatch": _("The two password fields didn’t match."),
