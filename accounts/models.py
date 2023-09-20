@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
-from .manager import UserManagers
+from core.models import CreateModel
+from django.utils import timezone
+
 
 
 class User(AbstractUser):
@@ -10,28 +12,33 @@ class User(AbstractUser):
         unique=True,
         null=True
         )
+    birthday = models.DateField(_("Birth day"), default=timezone.now)
+    gender = (
+        ('1', 'male'),
+        ('2', 'female'),
+    )
+    gender_choose = models.CharField(_("Gender"), max_length=1, choices=gender)
+
     email_active_code = models.CharField(
         _('email active code'),
         max_length=128
     )
     
-
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
         db_table = 'user_model'
         
-
-# class Active_code(models.Model):
-#     email = models.EmailField(
-#         _('email'),
-#         unique=True,
-        
-#     )
-#     code = models.PositiveIntegerField()
+class Imageuser(CreateModel):
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    image = models.ImageField(upload_to='profile')
     
-#     class Meta:
-#         verbose_name = _('active code')
-#         verbose_name_plural = _('active codes')
-#         db_table = 'active-codes'
+    class Meta:
+        verbose_name = _('image user')
+        verbose_name_plural = _('image users')
+        db_table = 'image_user_model'
         
+class RecycleUser(User):
+    class Meta:
+        proxy = True
+

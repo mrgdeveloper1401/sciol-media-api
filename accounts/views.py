@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.utils.crypto import get_random_string
 from django.http import Http404
+from django.contrib.auth.forms import PasswordResetForm
 
 
 class UserSignupView(View):
@@ -65,13 +66,18 @@ class UserSigninView(View):
     def post(self, request):
         signin_form = self.form_class(request.POST)
         if signin_form.is_valid():
-            
+            cd = signin_form.cleaned_data
             user = authenticate(
-                username = '',
-                password = ''
+                username = cd['usernme'],
+                password = cd['password']
             )
             if user is not None:
                 login(user)
+                # success
+                # redirect
+                if self.next:
+                    return redirect(self.next)
+                # redirect
             # error
         return render(request, self.template_name, {"signin_form": signin_form})
     
@@ -80,3 +86,8 @@ class UserLogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         # message success
+        
+
+
+class ForgetPasswordView(View):
+    ...

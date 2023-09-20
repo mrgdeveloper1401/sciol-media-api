@@ -1,8 +1,12 @@
 from django.contrib import admin
-from .models import User
+from .models import User, RecycleUser
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
+
+@admin.register(RecycleUser)
+class RecycleUserAdmin(admin.ModelAdmin):
+    list_display = ['username', 'email', 'is_active']
 
 @admin.register(User)
 class UsersAdmin(UserAdmin):
