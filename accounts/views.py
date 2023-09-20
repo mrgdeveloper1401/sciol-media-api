@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from .forms import RegisterUserForm
 from .models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class RegisterUserView(View):
@@ -26,3 +28,30 @@ class RegisterUserView(View):
             )
         return render(request, self.template_name, {"register": register})
             
+
+class UserSigninView(View):
+    template_name = ''
+    form_class = ''
+    
+    def get(self, request):
+        signin_form = self.form_class()
+        return render(request, self.template_name, {"signin_form": signin_form})
+    
+    def post(self, request):
+        signin_form = self.form_class(request.POST)
+        if signin_form.is_valid():
+            
+            user = authenticate(
+                username = '',
+                password = ''
+            )
+            if user is not None:
+                login(user)
+            # error
+        return render(request, self.template_name, {"signin_form": signin_form})
+    
+
+class LogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        # message success
