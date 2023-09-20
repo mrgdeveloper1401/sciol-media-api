@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .forms import RegisterUserForm, UserSigninForm
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 class UserSignupView(View):
@@ -18,14 +19,15 @@ class UserSignupView(View):
         register = self.form_class(request.POST)
         if register.is_valid():
             cd = register.cleaned_data
-            email = cd.get('email')
-            username = cd.get('username')
-            password = cd.get('password')
             User.objects.create_user(
-                email=email,
-                password = password,
-                username = username
+                email = cd['email'],
+                username = cd['username'],
+                password = cd['password'],
+                is_active = False
             )
+            messages.success(request, 'success create account')
+            messages.success(request, 'please verify email address')
+            return redirect('accounts:login')
         return render(request, self.template_name, {"register": register})
             
 

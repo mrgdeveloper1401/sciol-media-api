@@ -9,7 +9,7 @@ class RegisterUserForm(forms.ModelForm):
     error_messages = {
         "password_mismatch": _("The two password fields didn’t match."),
     }
-    password1 = forms.CharField(
+    password = forms.CharField(
         label='password',
         widget=forms.PasswordInput)
     password2 = forms.CharField(
@@ -18,7 +18,7 @@ class RegisterUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', )
+        fields = ('email', 'username')
         
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -27,9 +27,9 @@ class RegisterUserForm(forms.ModelForm):
         return email
 
     def clean_password2(self):
-        password1 = self.cleaned_data.get("password1")
+        password = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
+        if password and password2 and password != password2:
             raise ValidationError(
                 self.error_messages["password_mismatch"],
                 code="password_mismatch",
