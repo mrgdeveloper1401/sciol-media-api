@@ -23,3 +23,5 @@ class UsersAdmin(UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
+    list_display = ("username", 'id', "email", "first_name", "last_name", "is_staff")
+

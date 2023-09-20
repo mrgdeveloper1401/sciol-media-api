@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.utils.crypto import get_random_string
+from django.http import Http404
 
 
 class UserSignupView(View):
@@ -32,8 +33,27 @@ class UserSignupView(View):
             messages.success(request, 'please verify email address', 'success')
             return redirect('accounts:login')
         return render(request, self.template_name, {"register": register})
-            
 
+
+class ActiveAccountView(View):
+    def get(self, request, email_active_code):
+        try:
+            user = User.objects.get(email_active_code__iexact=email_active_code)
+            if user:
+                if not user.is_active:
+                    user.is_active = True
+                    user.save()
+                    messages.success(request, 'Your account has been activated successfully.', 'success')
+                    return redirect('accounts:login')
+                else:
+                    messages.error(request, 'your accounts was activate', 'warning')
+                    raise Http404
+            else:
+                raise Http404
+        except User.DoesNotExist:
+            raise Http404
+
+        
 class UserSigninView(View):
     form_class = UserSigninForm
     template_name = 'accounts/login.html'
