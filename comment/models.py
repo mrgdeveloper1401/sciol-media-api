@@ -25,7 +25,7 @@ class CommentModel(CreateModel):
     
 class CommentsOptionModel(models.Model):
     comment = models.OneToOneField(PostModel, on_delete=models.PROTECT)
-    image = models.FileField(upload_to='post/image', null=True, blank=True)
+    image = models.ImageField(upload_to='post/image', null=True, blank=True)
     video = models.FileField(upload_to='post/video', null=True, blank=True)
     
     def __str__(self) -> str:
