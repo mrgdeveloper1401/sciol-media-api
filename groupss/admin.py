@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import GroupModel, GroupOptionModel
+from .models import GroupModel, GroupOptionModel, RecycleGroup, RecycleGroupOption
 
 
 @admin.register(GroupModel)
@@ -15,3 +15,13 @@ class groupOptionAdmin(admin.ModelAdmin):
     list_display = ('grup', 'is_active', )
     list_editable = ('is_active', )
     list_filter = ('is_active', 'create_at')
+    
+
+@admin.register(RecycleGroupOption)
+class RecycleGroupAdmin(admin.ModelAdmin):
+    ...
+    
+    
+@admin.register(RecycleGroup)
+class RecycleGroupOptionAdmin(admin.ModelAdmin):
+    ...

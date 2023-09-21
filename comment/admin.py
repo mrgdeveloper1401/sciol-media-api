@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CommentModel, CommentsOptionModel, RecycleComment
+from .models import CommentModel, CommentsOptionModel, RecycleComment, RecycleCommentOption
     
     
 @admin.register(CommentModel)
@@ -22,3 +22,7 @@ class CommentOptionAdmin(admin.ModelAdmin):
     pass
 
 
+
+@admin.register(RecycleCommentOption)
+class RecycleCommentOptionAsmin(admin.ModelAdmin):
+    ...

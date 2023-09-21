@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PostModel, PostOptionModel, RecyclePost, TagPostModel
+from .models import PostModel, PostOptionModel, RecyclePost, TagPostModel, RecyclePostOption
 
 
 @admin.register(RecyclePost)
@@ -25,3 +25,6 @@ class PostModelAdmin(admin.ModelAdmin):
     ...
 
 
+@admin.register(RecyclePostOption)
+class PostModelAdmin(admin.ModelAdmin):
+    ...

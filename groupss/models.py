@@ -35,3 +35,12 @@ class GroupOptionModel(CreateModel):
         verbose_name = _('group option')
         verbose_name_plural = _('group options')
         db_table = 'groups-option-model'
+        
+        
+class RecycleGroup(GroupModel):
+    class Meta:
+        proxy = True
+        
+class RecycleGroupOption(GroupOptionModel):
+    class Meta:
+        proxy = True

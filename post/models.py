@@ -62,3 +62,8 @@ class PostOptionModel(models.Model):
 class RecyclePost(PostModel):
     class Meta:
         proxy = True
+        
+
+class RecyclePostOption(PostOptionModel):
+    class Meta:
+        proxy = True

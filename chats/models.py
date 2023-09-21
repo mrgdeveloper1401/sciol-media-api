@@ -19,8 +19,12 @@ class ChatModel(CreateModel):
         db_table = 'chat-model'
         
 
+class RecycleChat(ChatModel):
+    class Meta:
+        proxy = True
+
 class ChatOptionModel(CreateModel):
-    option = models.ForeignKey(ChatModel, on_delete=models.PROTECT)
+    chat = models.ForeignKey(ChatModel, on_delete=models.PROTECT)
     image = models.ImageField(upload_to='chat/image', null=True, blank=True)
     video = models.FileField(upload_to='chat/video', null=True, blank=True)
     file = models.FileField(upload_to='chat/file', null=True, blank=True)
@@ -32,3 +36,8 @@ class ChatOptionModel(CreateModel):
         verbose_name = _('chat option')
         verbose_name_plural = _('chat options')
         db_table = 'chat-option-model'
+        
+
+class RecycleChatOption(ChatOptionModel):
+    class Meta:
+        proxy = True

@@ -40,3 +40,8 @@ class CommentsOptionModel(models.Model):
 class RecycleComment(CommentModel):
     class Meta:
         proxy = True
+        
+
+class RecycleCommentOption(CommentsOptionModel):
+    class Meta:
+        proxy = True

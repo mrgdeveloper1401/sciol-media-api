@@ -35,3 +35,11 @@ class PostChannal(CreateModel):
         verbose_name = _('channal option')
         verbose_name_plural = _('channal options')
         db_table = 'channal-option-model'
+        
+class RecycleChannal(ChannalModel):
+    class Meta:
+        proxy = True
+        
+class RecycleChannalOption(PostChannal):
+    class Meta:
+        proxy = True
