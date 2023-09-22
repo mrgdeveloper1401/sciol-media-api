@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import CreatePostSerializers
+from .models import PostModel, PostOptionModel, TagPostModel
 
-# Create your views here.
+
+class PostView(viewsets.ViewSet):
+    def list(self, request):
+        ...

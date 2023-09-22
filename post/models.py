@@ -8,7 +8,7 @@ from django.utils.text import slugify
 
 
 class PostModel(CreateModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='posts')
     body = models.TextField(max_length=500)
     slug = models.SlugField()
     is_active = models.BooleanField(default=True)
@@ -46,7 +46,7 @@ class TagPostModel(models.Model):
         
 
 class PostOptionModel(models.Model):
-    post = models.OneToOneField(PostModel, on_delete=models.CASCADE)
+    post = models.OneToOneField(PostModel, on_delete=models.PROTECT)
     image = models.ImageField(upload_to='post/image', null=True, blank=True)
     video = models.FileField(upload_to='post/video', null=True, blank=True)
 

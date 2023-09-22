@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import UserCreateAccountSerializers
@@ -9,16 +10,8 @@ class UserCreateAccountView(APIView):
     serializer_class = UserCreateAccountSerializers
     
     def post(self, request):
-        ser_data_user = UserCreateAccountSerializers(data=request.data)
+        ser_data_user = self.serializer_class(data=request.data)
         if ser_data_user.is_valid():
-            vd = ser_data_user.validated_data
-            User.objects.create_user(
-                first_name = vd['first_name'],
-                last_name = vd['last_name'],
-                email = vd['email'],
-                username = vd['username'],
-                password = vd['password'],
-                mobile = vd['mobile']
-            )
+            ser_data_user.save()
             return Response(data=ser_data_user.data, status=status.HTTP_201_CREATED)
         return Response(data=ser_data_user.errors, status=status.HTTP_400_BAD_REQUEST)
