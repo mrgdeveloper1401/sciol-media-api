@@ -14,10 +14,10 @@ class User(AbstractUser):
         )
     birthday = models.DateField(_("Birth day"), default=timezone.now)
     gender = (
-        ('1', 'male'),
-        ('2', 'female'),
+        ('male', 'male'),
+        ('female', 'female'),
     )
-    gender_choose = models.CharField(_("Gender"), max_length=1, choices=gender)
+    gender_choose = models.CharField(_("Gender"), max_length=6, choices=gender)
 
     email_active_code = models.CharField(
         _('email active code'),

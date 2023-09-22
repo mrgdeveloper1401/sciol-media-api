@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import User
+from rest_framework import viewsets
 
 
 
@@ -33,3 +34,7 @@ class UserCreateAccountSerializers(serializers.ModelSerializer):
         return value
 
 
+class ProfileSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ('email_active_code', 'is_staff', 'is_active', 'password', 'is_superuser', 'groups', 'user_permissions')
