@@ -2,12 +2,14 @@ from rest_framework.views import APIView
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from .serializers import UserCreateAccountSerializers, ProfileSerializers
 from .models import User
 
 # create account
 class UserCreateAccountView(APIView):
     serializer_class = UserCreateAccountSerializers
+    permission_classes = (IsAuthenticated, )
     
     def post(self, request):
         ser_data_user = self.serializer_class(data=request.data)
@@ -26,6 +28,7 @@ class ShowProfileView(APIView):
     
 
 class UpdateProfileView(APIView):
+    permission_classes = (IsAuthenticated, )
     def put(self, request, pk):
         user = User.objects.get(pk=pk)
         update_ser = ProfileSerializers(user, data=request.data, partial=True)
@@ -36,6 +39,7 @@ class UpdateProfileView(APIView):
         
         
 class DeleteProfileView(APIView):
+    permission_classes = (IsAuthenticated, )
     def delete(self, request, pk):
         user = User.objects.get(pk=pk)
         user.is_active = False
