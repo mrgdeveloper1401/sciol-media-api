@@ -11,14 +11,14 @@ class UserCreateAccountView(APIView):
     def post(self, request):
         ser_data_user = UserCreateAccountSerializers(data=request.data)
         if ser_data_user.is_valid():
-            ser_data_user.save()
             vd = ser_data_user.validated_data
-            User.objects.create(
+            User.objects.create_user(
                 first_name = vd['first_name'],
                 last_name = vd['last_name'],
                 email = vd['email'],
                 username = vd['username'],
-                password = vd['password']
+                password = vd['password'],
+                mobile = vd['mobile']
             )
             return Response(data=ser_data_user.data, status=status.HTTP_201_CREATED)
         return Response(data=ser_data_user.errors, status=status.HTTP_400_BAD_REQUEST)

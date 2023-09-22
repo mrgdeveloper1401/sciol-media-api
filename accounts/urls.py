@@ -4,6 +4,6 @@ from . import views
 
 app_name = 'accounts'
 urlpatterns = [
-    path('api-user/', views.UserCreateAccountView.as_view(),name='create_user'),
+    path('create/', views.UserCreateAccountView.as_view(),name='create_user'),
     
 ]
