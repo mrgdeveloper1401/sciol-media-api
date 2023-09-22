@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # app
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('', include('post.urls', namespace='post')),
     # schema
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
