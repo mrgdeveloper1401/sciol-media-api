@@ -29,6 +29,35 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'drf_spectacular',
+    
+]
+
+
+LOCAL_APP = [
+
+    
+]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'sciol api',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,10 +75,8 @@ INSTALLED_APPS = [
     'chats.apps.ChatsConfig',
     'groupss.apps.GroupssConfig',
     'channals.apps.ChannalsConfig',
-    
-    
-    
-    
+    *LOCAL_APP,
+    *THIRD_PARTY_APPS
     
 ]
 
