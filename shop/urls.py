@@ -34,6 +34,7 @@ urlpatterns = [
     # app
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('', include('post.urls', namespace='post')),
+    path('channals/', include('channals.urls', namespace='channal')),
     # schema
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:

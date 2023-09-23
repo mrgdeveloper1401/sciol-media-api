@@ -1,11 +1,13 @@
 from rest_framework import routers
+from rest_framework.routers import SimpleRouter
 from django.urls import include, path
 from . import views
 
 
-router = routers.SimpleRouter()
-router.register = (r'channal', views.ChannalViewSet)
+router = SimpleRouter()
+router.register(r'channels', views.ChannalViewSet, basename='channal')
 
+app_name = 'channal'
 urlpatterns = [
-    path('channal/', include(router.urls))
+    path('', include(router.urls))
 ] + router.urls
