@@ -1,8 +1,12 @@
 from rest_framework import serializers
 from accounts.models import User
+from .models import RelationUserModel
 
 
-class RelationUser(serializers.ModelSerializer):
+class RelationUserSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
-        # fields = ('',)
+        fields = '__all__'
+    
+    def create(self, validated_data):
+        return RelationUserModel.objects.create(**validated_data)
