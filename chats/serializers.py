@@ -9,6 +9,10 @@ class Chatserializers(serializers.ModelSerializer):
         
     def create(self, validated_data):
         return ChatModel.objects.create(**validated_data)
+    
+    def update(self, instance, validated_data):
+        instance.body = validated_data.get('body', instance.body)
+        return instance
         
         
 class ChatOptionSerializer(serializers.ModelSerializer):
