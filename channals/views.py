@@ -4,6 +4,8 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.request import Request
+from rest_framework.mixins import CreateModelMixin, DestroyModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
+from rest_framework.generics import CreateAPIView
 from django.shortcuts import get_object_or_404
 from .serializers import ChannalSerializers
 from .models import ChannalModel
@@ -53,3 +55,8 @@ class ChannalViewSet(viewsets.ViewSet):
         delete_channal.is_active = False
         delete_channal.save()
         return Response({'message': 'delete channal success'})
+    
+
+class ChannalViewSet(viewsets.ModelViewSet):
+    serializer_class = ''
+    queryset = ''

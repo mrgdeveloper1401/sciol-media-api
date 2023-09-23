@@ -1,5 +1,5 @@
 from rest_framework import routers
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import SimpleRouter, DefaultRouter
 from django.urls import include, path
 from . import views
 
