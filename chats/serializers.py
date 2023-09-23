@@ -7,6 +7,9 @@ class Chatserializers(serializers.ModelSerializer):
         model = ChatModel
         fields = '__all__'
         
+    def create(self, validated_data):
+        return ChatModel.objects.create(**validated_data)
+        
         
 class ChatOptionSerializer(serializers.ModelSerializer):
     class Meta:
