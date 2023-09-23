@@ -7,3 +7,5 @@ class PostSerializers(serializers.ModelSerializer):
         model = PostModel
         fields = '__all__'
 
+    def create(self, validated_data):
+        return PostModel.objects.create(**validated_data)

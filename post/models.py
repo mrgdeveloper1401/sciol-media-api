@@ -14,8 +14,6 @@ class PostModel(CreateModel):
     is_active = models.BooleanField(default=True)
     post_tag = models.ManyToManyField('TagPostModel', blank=True, related_name='Ptag')
     
-
-    
     def __str__(self):
         return f'{self.user} -- {self.body}'
     
