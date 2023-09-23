@@ -27,7 +27,10 @@ from rest_framework_simplejwt.views import (
 
 
 urlpatterns = [
+    # pannel admin django
     path('admin/', admin.site.urls),
+    # pannel admin rest_framework
+    path('api-auth/', include('rest_framework.urls')),
     # app
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('', include('post.urls', namespace='post')),

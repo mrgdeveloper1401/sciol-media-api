@@ -37,4 +37,11 @@ class UserCreateAccountSerializers(serializers.ModelSerializer):
 class ProfileSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
+        # exclude = ('email_active_code', 'is_staff', 'is_active', 'password', 'is_superuser', 'groups', 'user_permissions')
+        fields = '__all__'
+        
+
+class UpdateProfileSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = User
         exclude = ('email_active_code', 'is_staff', 'is_active', 'password', 'is_superuser', 'groups', 'user_permissions')
