@@ -11,6 +11,7 @@ class CommentModel(CreateModel):
     post = models.ForeignKey(PostModel, on_delete=models.CASCADE, related_name='pcomment')
     body = models.TextField(max_length=400)
     reply = models.ForeignKey('self', on_delete=models.CASCADE, related_name='rcomment', blank=True, null=True)
+    is_active = models.BooleanField(default=True)
     is_reply = models.BooleanField(default=True)
     
     class Meta:
