@@ -4,8 +4,13 @@ from .serializers import ChatOptionSerializer, Chatserializers
 
 
 class ChatViewSet(viewsets.ViewSet):
+    serializer_class = Chatserializers
+    
+    
     def list(self, request):
-        pass
+        all_chat = ChatModel.objects.filter(is_active=True)
+        
+        
 
     def create(self, request):
         pass

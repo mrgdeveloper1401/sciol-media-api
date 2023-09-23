@@ -9,6 +9,7 @@ class ChatModel(CreateModel):
     from_user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='frchat')
     to_user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='tochat')
     body = models.TextField()
+    is_active = models.BooleanField(default=True)
     
     def __str__(self):
         return f'{self.from_user}  {self.to_user}'
