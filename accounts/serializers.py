@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, ImageuserModel
 from rest_framework import viewsets
-
 
 
 class UserCreateAccountSerializers(serializers.ModelSerializer):    
@@ -35,13 +34,26 @@ class UserCreateAccountSerializers(serializers.ModelSerializer):
 
 
 class ProfileSerializers(serializers.ModelSerializer):
+    # profile_option = ProfileOptionSerializers()
     class Meta:
         model = User
-        # exclude = ('email_active_code', 'is_staff', 'is_active', 'password', 'is_superuser', 'groups', 'user_permissions')
         fields = '__all__'
-        
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'is_active': {'write_only': True},
+            'is_staff': {'write_only': True},
+            'is_superuser': {'write_only': True},
+            'groups': {'write_only': True},
+            'user_permissions': {'write_only': True},
+            'date_joined': {'write_only': True},
+            'email_active_code': {'write_only': True, 'required': False},
+            'password': {'write_only': True, 'required': False},
+            'username': {'required': False},
+            'gender': {'required': False},
+            }
 
-class UpdateProfileSerializers(serializers.ModelSerializer):
+
+class ProfileOptionSerializers(serializers.ModelSerializer):
     class Meta:
-        model = User
-        exclude = ('email_active_code', 'is_staff', 'is_active', 'password', 'is_superuser', 'groups', 'user_permissions')
+        model = ImageuserModel
+        fields = '__all__'

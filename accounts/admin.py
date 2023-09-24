@@ -12,7 +12,7 @@ class RecycleUserAdmin(admin.ModelAdmin):
 class UsersAdmin(UserAdmin):
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "birthday", "gender_choose", "email", 'mobile')}),
+        (_("Personal info"), {"fields": ("first_name", "last_name", "birthday", "gender", "email", 'mobile')}),
         (
             _("Permissions"),
             {

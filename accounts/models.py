@@ -13,11 +13,11 @@ class User(AbstractUser):
         null=True
         )
     birthday = models.DateField(_("Birth day"), default=timezone.now)
-    gender = (
+    genders = (
         ('male', 'male'),
         ('female', 'female'),
     )
-    gender_choose = models.CharField(_("Gender"), max_length=6, choices=gender)
+    gender = models.CharField(_("Gender"), max_length=6, choices=genders)
 
     email_active_code = models.CharField(
         _('email active code'),
@@ -29,7 +29,7 @@ class User(AbstractUser):
         verbose_name_plural = 'users'
         db_table = 'user_model'
         
-class Imageuser(CreateModel):
+class ImageuserModel(CreateModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     image = models.ImageField(upload_to='profile')
     
