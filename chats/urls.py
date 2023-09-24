@@ -1,11 +1,12 @@
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 from django.urls import include, path
 from . import views
 
 
-router = routers.SimpleRouter()
-router.register = (r'chat', views.ChatViewSet)
+router = DefaultRouter()
+router.register = ('', views.ChatViewSet)
 
+app_name = 'chats'
 urlpatterns = [
-    path('chat/', include(router.urls))
+    path('', include(router.urls))
 ] + router.urls

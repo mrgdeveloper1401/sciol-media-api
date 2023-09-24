@@ -33,8 +33,11 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     # app
     path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('', include('post.urls', namespace='post')),
-    path('channals/', include('channals.urls', namespace='channal')),
+    path('channals/', include('channals.urls', namespace='channals')),
+    path('chat/', include('chats.urls', namespace='chats')),
+    path('comments/', include('comment.urls', namespace='comments')),
+    path('posts/', include('post.urls', namespace='posts')),
+    path('groups/', include('groupss.urls', namespace='groups')),
     # schema
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:

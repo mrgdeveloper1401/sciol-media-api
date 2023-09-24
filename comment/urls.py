@@ -1,12 +1,12 @@
 from django.urls import path, include
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 from . import views
 
-router = routers.SimpleRouter()
-router.register(r'comment', views.CommentSerializers, basename='comment')
+router = DefaultRouter()
+router.register('', views.CommentSerializers)
 
 
-app_name = 'post'
+app_name = 'comments'
 urlpatterns = [
-    path('comment/', include(router.urls))
+    path('', include(router.urls))
 ] + router.urls

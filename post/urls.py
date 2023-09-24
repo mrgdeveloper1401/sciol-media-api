@@ -1,12 +1,12 @@
 from django.urls import path, include
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 from . import views
 
-router = routers.SimpleRouter()
-router.register(r'post', views.PostViewSet, basename='home_post')
+router = DefaultRouter()
+router.register('', views.PostViewSet)
 
 
-app_name = 'post'
+app_name = 'posts'
 urlpatterns = [
     path('', include(router.urls))
 ] + router.urls
