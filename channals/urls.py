@@ -4,8 +4,9 @@ from django.urls import include, path
 from . import views
 
 
-router = SimpleRouter()
-router.register(r'channels', views.ChannalViewSet, basename='channal')
+# router = SimpleRouter()
+router = DefaultRouter()
+router.register(r'channels', views.ChannalViewSet, basename='c')
 
 app_name = 'channal'
 urlpatterns = [

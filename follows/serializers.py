@@ -7,6 +7,3 @@ class RelationUserSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
-    
-    def create(self, validated_data):
-        return RelationUserModel.objects.create(**validated_data)
