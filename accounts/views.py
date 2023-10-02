@@ -10,10 +10,9 @@ class UserViewset(viewsets.ModelViewSet):
     serializer_class = UserAccountSerializers
 
 
-class ProfileApiview(RetrieveUpdateDestroyAPIView):
+class ProfileApiView(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = ProfileSerializers
-    # permission_classes = (IsAuthenticated, )
 
 
 class profileOptionApiView(RetrieveUpdateAPIView):
