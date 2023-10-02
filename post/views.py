@@ -10,5 +10,4 @@ class PostViewSet(viewsets.ModelViewSet):
     permission_classes =''
     filter_backends = (filters.SearchFilter,)
     search_fields = ('body', )
-
     

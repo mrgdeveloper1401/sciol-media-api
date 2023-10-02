@@ -11,7 +11,9 @@ class UserAccountSerializers(serializers.ModelSerializer):
             'first_name': {"required": True},
             'last_name': {'required': True},
             'email': {"required": True},
-            'mobile': {'required': True, }
+            'mobile': {'required': True, },
+            'password': {'write_only': True},
+            
         }      
       
 
@@ -37,3 +39,5 @@ class ProfileSerializers(serializers.ModelSerializer):
             'gender': {'required': True},
             
         }
+
+

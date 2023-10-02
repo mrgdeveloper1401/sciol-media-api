@@ -6,3 +6,5 @@ from .models import CommentModel, CommentsOptionModel
 class Commentviewset(viewsets.ModelViewSet):
     queryset = CommentModel.objects.filter(is_active=True)
     serializer_class = CommentSerializers
+    
+

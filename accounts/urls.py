@@ -8,5 +8,7 @@ router.register(r'user', views.UserViewset, basename='user')
 app_name = 'accounts'
 urlpatterns = [
     path('v1/', include(router.urls)),
-    path('profile/<int:pk>/', views.ProfileApiView.as_view(), name='profile')
+    path('profile/<int:pk>/', views.ProfileApiView.as_view(), name='profile'),
+    path('show-profile/<int:pk>/', views.UserRetiveApiView.as_view(), name='show_profile'),
+    
 ] + router.urls

@@ -5,4 +5,4 @@ from .models import PostModel, PostOptionModel, TagPostModel
 class PostSerializers(serializers.ModelSerializer):
     class Meta:
         model = PostModel
-        fields = ('user', 'body', 'post_tag')
+        fields = ('user', 'body', 'post_tag', 'create_at')
