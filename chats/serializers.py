@@ -5,7 +5,12 @@ from .models import ChatModel, ChatOptionModel
 class Chatserializers(serializers.ModelSerializer):
     class Meta:
         model = ChatModel
-        fields = '__all__'
+        fields = (
+            'from_user',
+            'to_user',
+            'body',
+            'create_at',
+        )
 
         
 class ChatOptionSerializer(serializers.ModelSerializer):

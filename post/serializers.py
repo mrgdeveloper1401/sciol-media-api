@@ -5,16 +5,4 @@ from .models import PostModel, PostOptionModel, TagPostModel
 class PostSerializers(serializers.ModelSerializer):
     class Meta:
         model = PostModel
-        fields = '__all__'
-        
-        
-class PostSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = TagPostModel
-        fields = '__all__'
-        
-        
-class PostSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = PostOptionModel
-        fields = '__all__'
+        fields = ('user', 'body', 'post_tag')

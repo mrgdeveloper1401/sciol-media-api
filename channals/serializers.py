@@ -5,10 +5,10 @@ from .models import ChannalModel, PostChannal
 class ChannalSerializers(serializers.ModelSerializer):
     class Meta:
         model = ChannalModel
-        fileds = '__all__'
+        exclude = ('is_active', )
         
         
 class ChannalOptionSerializers(serializers.ModelSerializer):
     class Meta:
         model = PostChannal
-        fileds = '__all__'
+        fields = '__all__'

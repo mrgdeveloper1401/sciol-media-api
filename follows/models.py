@@ -13,6 +13,7 @@ class RelationUserModel(CreateModel):
         verbose_name = _('relation')
         verbose_name_plural = _('relations')
         db_table = 'relation-model'
+        
     def __str__(self) -> str:
         return f'{self.from_user}  {self.to_user}'
     

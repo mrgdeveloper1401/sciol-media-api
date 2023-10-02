@@ -9,7 +9,8 @@ class ChannalModel(CreateModel):
     channal_name = models.CharField(_('channal name'), max_length=30)
     image_channal = models.ImageField(_('image channal'), upload_to='channal/image_channal/', null=True, blank=True)
     description = models.TextField(_('bio channal'), max_length=500)
-    id_channal = models.SlugField(_('id'), max_length=50, null=True)
+    id_channal = models.SlugField(_('id'), max_length=50, null=True,
+                                  help_text='write id channal with start @any thing')
     members = models.ManyToManyField(User, related_name='members_channal')
     is_active = models.BooleanField(default=True)
     is_publish = models.BooleanField(default=True)
