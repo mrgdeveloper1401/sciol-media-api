@@ -1,12 +1,13 @@
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
-from .serializers import UserCreateAccountSerializers, ProfileSerializers
-from .models import User
+from rest_framework import viewsets
+from .serializers import UserAccountSerializers, ProfileSerializers, ProfileOptionSerializers
+from .models import User, ImageuserModel
 
 
-class UserCreateAccountView(CreateAPIView):
+class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserCreateAccountSerializers
+    serializer_class = UserAccountSerializers
 
 
 class ProfileApiview(RetrieveUpdateDestroyAPIView):
@@ -14,3 +15,7 @@ class ProfileApiview(RetrieveUpdateDestroyAPIView):
     serializer_class = ProfileSerializers
     # permission_classes = (IsAuthenticated, )
 
+
+class profileOptionApiView(RetrieveUpdateAPIView):
+    queryset = ImageuserModel.objects.all()
+    serializer_class = ProfileOptionSerializers

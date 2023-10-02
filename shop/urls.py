@@ -32,10 +32,10 @@ urlpatterns = [
     # pannel admin rest_framework
     path('api-auth/', include('rest_framework.urls')),
     # app
-    path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('channals/', include('channals.urls', namespace='channals')),
-    path('chat/', include('chats.urls', namespace='chats')),
-    path('comments/', include('comment.urls', namespace='comments')),
+    path('accounts/', include('accounts.urls')),
+    path('channals/', include('channals.urls')),
+    path('chat/', include('chats.urls')),
+    path('comments/', include('comment.urls')),
     path('posts/', include('post.urls', namespace='posts')),
     path('groups/', include('groupss.urls', namespace='groups')),
     # schema

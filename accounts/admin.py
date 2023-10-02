@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, RecycleUser
+from .models import User, RecycleUser, ImageuserModel
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
@@ -29,3 +29,5 @@ class UsersAdmin(UserAdmin):
     )
     list_display = ("username", 'id', "email", "first_name", "last_name", "is_staff")
 
+
+admin.site.register(ImageuserModel)

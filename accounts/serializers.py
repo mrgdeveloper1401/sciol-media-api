@@ -3,7 +3,7 @@ from .models import User, ImageuserModel
 from rest_framework import viewsets
 
 
-class UserCreateAccountSerializers(serializers.ModelSerializer):    
+class UserAccountSerializers(serializers.ModelSerializer):    
     password = serializers.CharField(write_only=True, required=True)
     class Meta:
         model = User
@@ -14,27 +14,17 @@ class UserCreateAccountSerializers(serializers.ModelSerializer):
             'email': {"required": True},
             'mobile': {'required': True, }
         }
-        
-    def create(self, validated_data):
-        return User.objects.create_user(**validated_data)
-    
-    def validate_username(self, value):
-        if 'admin' in value:
-            raise serializers.ValidationError('username cant be admin')
-        elif 'root' in value:
-            raise serializers.ValidationError('username cant be root')
-        return value
-    
-    def validate_email(self, value):
-        if 'admin' in value:
-            raise serializers.ValidationError('email cant be admin')
-        elif 'root' in value:
-            raise serializers.ValidationError('email cant be root')
-        return value
+      
+      
 
-
+class ProfileOptionSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        model = ImageuserModel
+        fields = ('image',)
+          
 class ProfileSerializers(serializers.ModelSerializer):
-    # profile_option = ProfileOptionSerializers()
+    image = ProfileOptionSerializers(many=True)
     class Meta:
         model = User
         fields = '__all__'
@@ -51,9 +41,3 @@ class ProfileSerializers(serializers.ModelSerializer):
             'username': {'required': False},
             'gender': {'required': False},
             }
-
-
-class ProfileOptionSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = ImageuserModel
-        fields = '__all__'

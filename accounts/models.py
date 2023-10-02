@@ -10,7 +10,6 @@ class User(AbstractUser):
     mobile = models.CharField(_('mobile phone'),
         max_length=11,
         unique=True,
-        null=True
         )
     birthday = models.DateField(_("Birth day"), default=timezone.now)
     genders = (
@@ -30,7 +29,7 @@ class User(AbstractUser):
         db_table = 'user_model'
         
 class ImageuserModel(CreateModel):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='image')
     image = models.ImageField(upload_to='profile')
     
     class Meta:

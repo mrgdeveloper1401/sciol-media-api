@@ -3,10 +3,10 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-router.register('', views.CommentSerializers)
+router.register('', views.Commentviewset, basename='comment')
 
 
-app_name = 'comments'
+
 urlpatterns = [
     path('', include(router.urls))
 ] + router.urls

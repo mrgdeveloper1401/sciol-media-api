@@ -6,9 +6,9 @@ from . import views
 
 # router = SimpleRouter()
 router = DefaultRouter()
-router.register(r'channels', views.ChannalViewSet)
+router.register(r'channels', views.ChannalViewSet, basename='channal')
 
-app_name = 'channals'
+
 urlpatterns = [
     path('', include(router.urls))
 ] + router.urls
